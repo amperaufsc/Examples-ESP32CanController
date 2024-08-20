@@ -81,19 +81,19 @@ void app_main() {
         if (twai_receive(&message2, pdMS_TO_TICKS(100)) == ESP_OK)
         {
             printf("message2 received! ");
+            //Process received message2
+            printf("ID is %lx\n", message2.identifier);
+            for (int i = 0; i < message2.data_length_code; i++)
+            {
+            printf("0x%02X ", message2.data[i]);
+            }
+            printf("\n");
         } 
         else
         {
             printf("Failed to receive message2\n");
         }
 
-        //Process received message2
-        printf("ID is %lx\n", message2.identifier);
-        for (int i = 0; i < message2.data_length_code; i++)
-        {
-        printf("0x%02X ", message2.data[i]);
-        }
-        printf("\n");
     }
     
 }
